@@ -14,7 +14,8 @@
 
 ### Extension Setup
 
-![Extension Setup](./demoimages/extensionlist.png)
+![Extension Setup](demoimage/extensionlist.png)
+
 
 ### Data Entry
 
