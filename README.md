@@ -29,7 +29,7 @@
 1. **Download the Extension**
 
    Click the link below to download the extension file:
-   - [Download DrinkDost Browser Extension (.crx)](link-to-your-crx-file)
+   - [Download DrinkDost Browser Extension (.crx)](DrinkDost-BrowserExtension.crx)
 
 2. **Install the Extension in Chrome**
 
