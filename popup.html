@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DrinkDost</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #container {
+      text-align: center;
+      width: 500px; 
+      height: auto;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    #settingsForm {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 400px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: calc(100% - 22px);
+      padding: 10px;
+      margin: 5px 0 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+      autocomplete: off; /* Disabling autocomplete */
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>DrinkDost Setup</h1>
+    <form id="settingsForm" autocomplete="off"> <!-- Disabling autocomplete for the entire form -->
+      <label for="username">Name:</label>
+      <input type="text" id="username" required><br>
+      <label for="weight">Weight (kg):</label>
+      <input type="number" id="weight" required><br>
+      <label for="season">Season:</label>
+      <select id="season" required>
+        <option value="hot">Hot</option>
+        <option value="cold">Cold</option>
+        <option value="moderate">Moderate</option>
+      </select><br>
+      <label for="hours">Working Hours:</label>
+      <input type="number" id="hours" required><br>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
