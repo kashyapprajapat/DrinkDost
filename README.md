@@ -19,11 +19,11 @@
 
 ### Data Entry
 
-![Data Entry](./demoimages/takedat.png)
+![Data Entry](demoimage/notification.png)
 
 ### Notifications
 
-![Notifications](./demoimages/notification.png)
+![Notifications](demoimage/notification.png)
 
 ## Installation
 
