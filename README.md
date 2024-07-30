@@ -19,7 +19,7 @@
 
 ### Data Entry
 
-![Data Entry](demoimage/notification.png)
+![Data Entry](demoimage/takedata.png)
 
 ### Notifications
 
