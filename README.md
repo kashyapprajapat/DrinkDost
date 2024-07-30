@@ -14,15 +14,15 @@
 
 ### Extension Setup
 
-![Extension Setup](demoimages/extensionlist.png)
+![Extension Setup](./demoimages/extensionlist.png)
 
 ### Data Entry
 
-![Data Entry](demoimages/takedat.png)
+![Data Entry](./demoimages/takedat.png)
 
 ### Notifications
 
-![Notifications](demoimages/notification.png)
+![Notifications](./demoimages/notification.png)
 
 ## Installation
 
