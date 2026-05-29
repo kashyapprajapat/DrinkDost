@@ -5,10 +5,27 @@ chrome.runtime.onInstalled.addListener(() => {
   initializeNotifications();
 });
 
+// Re-initialize after browser restart (service workers don't persist across restarts)
+chrome.runtime.onStartup.addListener(() => {
+  console.log('Browser started. Re-initializing notifications.');
+  initializeNotifications();
+});
+
 chrome.storage.onChanged.addListener((changes, area) => {
   if (area === 'local' && changes.userSettings) {
     console.log('User settings changed:', changes.userSettings.newValue);
     initializeNotifications();
+  }
+});
+
+// Respond to the alarm firing (service-worker safe — no setInterval)
+chrome.alarms.onAlarm.addListener((alarm) => {
+  if (alarm.name === 'drinkWaterReminder') {
+    chrome.storage.local.get(['userSettings'], function(result) {
+      if (result.userSettings) {
+        sendNotification(result.userSettings.username);
+      }
+    });
   }
 });
 
@@ -25,22 +42,21 @@ function initializeNotifications() {
 
     const totalMinutes = hours * 60;
     const intervalMinutes = totalMinutes / (waterIntake.adjustedDailyIntake * 1000 / 62);
-    // const intervalMinutes = 2; // 2-minute interval for notifications
 
-    if (intervalMinutes <= 0) {
+    // Guard against 0, negative, NaN, and Infinity (e.g. when weight is 0)
+    if (!isFinite(intervalMinutes) || intervalMinutes <= 0) {
       console.log('Invalid interval minutes:', intervalMinutes);
       return;
     }
 
-    // Clear any existing intervals
-    if (globalThis.notificationInterval) {
-      clearInterval(globalThis.notificationInterval);
-    }
-
-    // Schedule notifications
-    globalThis.notificationInterval = setInterval(() => {
-      sendNotification(username);
-    }, intervalMinutes * 60 * 1000); // Convert minutes to milliseconds
+    // Clear any existing alarm before creating a new one
+    chrome.alarms.clear('drinkWaterReminder', () => {
+      chrome.alarms.create('drinkWaterReminder', {
+        delayInMinutes: intervalMinutes,
+        periodInMinutes: intervalMinutes
+      });
+      console.log(`Alarm set for every ${intervalMinutes.toFixed(2)} minutes`);
+    });
   });
 }
 
@@ -69,11 +85,12 @@ function calculateWaterIntake(weight, season) {
       break;
   }
 
+  // Return raw numbers, not strings (.toFixed returns a string)
   const adjustedDailyIntake = dailyIntake * (1 + seasonalFactor);
   const workdayIntake = (adjustedDailyIntake / 24) * 8;
 
   return {
-    adjustedDailyIntake: adjustedDailyIntake.toFixed(2),
-    workdayIntake: workdayIntake.toFixed(2)
+    adjustedDailyIntake,
+    workdayIntake
   };
 }
