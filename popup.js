@@ -14,7 +14,8 @@ document.getElementById('settingsForm').addEventListener('submit', function(even
   
     chrome.storage.local.set({ userSettings }, function() {
       console.log('Settings saved');
-      alert('Settings saved!');
+      document.getElementById('settingsForm').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
     });
   });
   

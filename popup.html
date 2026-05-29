@@ -45,7 +45,6 @@
       border: 1px solid #ddd;
       border-radius: 4px;
       box-sizing: border-box;
-      autocomplete: off; /* Disabling autocomplete */
     }
     button {
       background-color: #007bff;
@@ -65,6 +64,10 @@
 <body>
   <div id="container">
     <h1>DrinkDost Setup</h1>
+    <div id="successMsg" style="display:none; padding: 30px;">
+      <p style="font-size: 18px; color: #28a745;">&#10003; Settings saved!</p>
+      <p>Your hydration reminders are all set. You can close this popup.</p>
+    </div>
     <form id="settingsForm" autocomplete="off"> <!-- Disabling autocomplete for the entire form -->
       <label for="username">Name:</label>
       <input type="text" id="username" required><br>
