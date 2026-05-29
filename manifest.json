@@ -3,7 +3,7 @@
     "name": "DrinkDost",
     "version": "1.0",
     "description": "Your friendly hydration reminder",
-    "permissions": ["storage", "notifications"],
+    "permissions": ["storage", "notifications", "alarms"],
     "action": {
       "default_popup": "popup.html",
       "default_icon": {
