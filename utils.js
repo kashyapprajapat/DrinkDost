@@ -13,11 +13,12 @@ function calculateWaterIntake(weight, season) {
             break;
     }
 
+    // Return raw numbers, not strings (.toFixed returns a string)
     const adjustedDailyIntake = dailyIntake * (1 + seasonalFactor);
     const workdayIntake = (adjustedDailyIntake / 24) * 8;
 
     return {
-        adjustedDailyIntake: adjustedDailyIntake.toFixed(2),
-        workdayIntake: workdayIntake.toFixed(2)
+        adjustedDailyIntake,
+        workdayIntake
     };
 }
