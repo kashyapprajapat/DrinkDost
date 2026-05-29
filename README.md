@@ -22,7 +22,10 @@ $$\text{Daily Intake (L)} = \text{Weight (kg)} \times 0.035$$
 
 **Step 2 — Seasonal adjustment:**
 
-$$\text{Seasonal Factor} = \begin{cases} +20\% & \text{Hot season} \\ +0\% & \text{Cold / Moderate season} \end{cases}$$
+| Season | Factor |
+|--------|--------|
+| Hot | +20% |
+| Cold / Moderate | +0% |
 
 $$\text{Adjusted Daily Intake (L)} = \text{Daily Intake} \times (1 + \text{Seasonal Factor})$$
 
@@ -30,7 +33,7 @@ $$\text{Adjusted Daily Intake (L)} = \text{Daily Intake} \times (1 + \text{Seaso
 
 Each reminder delivers approximately **62 ml** of water. The interval between reminders is:
 
-$$\text{Interval (min)} = \frac{\text{Working Hours} \times 60}{\dfrac{\text{Adjusted Daily Intake (L)} \times 1000}{62}}$$
+$$\text{Interval (min)} = \frac{\text{Working Hours} \times 60 \times 62}{\text{Adjusted Daily Intake (L)} \times 1000}$$
 
 ### Flow Diagram
 
